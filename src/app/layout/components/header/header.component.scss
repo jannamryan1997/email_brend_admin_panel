@@ -1,0 +1,32 @@
+@import "src/@fuse/scss/fuse";
+
+.header {
+    .search-wrapper {
+        width: 100%;
+        max-width: 480px;
+        border-radius: 28px;
+        overflow: hidden;
+        @include mat-elevation(1);
+
+        .search {
+            width: 100%;
+            height: 48px;
+            line-height: 48px;
+            padding: 0 18px;
+            background: #ffffff;
+            mat-icon {
+                color: rgba(0, 0, 0, 0.54);
+            }
+
+            input {
+                width: 100%;
+                height: 48px;
+                min-height: 48px;
+                max-height: 48px;
+                padding: 0 16px;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+}

@@ -1,4 +1,9 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { Subject, fromEvent } from 'rxjs';
+import { takeUntil, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { ECommerceFakeDb } from 'app/fake-db/fake-db';
 
 @Component({
     selector: "app-product-content-list",
@@ -7,10 +12,33 @@ import { Component, OnDestroy, OnInit } from "@angular/core";
 })
 
 export class ProductContentlistComponent implements OnInit, OnDestroy {
+    dataSource = [];
+    displayedColumns = ['id', 'image', 'name', 'category', 'price', 'quantity', 'active'];
 
-    constructor() { }
 
-    ngOnInit() { }
+    // Private
+    private _unsubscribeAll: Subject<any>;
+
+    constructor(
+    ) {
+        // Set the private defaults
+        this._unsubscribeAll = new Subject();
+    }
+
+    // -----------------------------------------------------------------------------------------------------
+    // @ Lifecycle hooks
+    // -----------------------------------------------------------------------------------------------------
+
+    /**
+     * On init
+     */
+    ngOnInit(): void {
+        this.dataSource = ECommerceFakeDb.products;
+        console.log(this.dataSource);
+        
+    }
 
     ngOnDestroy() { }
+
 }
+

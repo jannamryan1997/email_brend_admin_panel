@@ -62,6 +62,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
+
         // Build the config form
         // noinspection TypeScriptValidateTypes
         this.form = this._formBuilder.group({
@@ -96,6 +97,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                 })
             })
         });
+
 
         // Subscribe to the config changes
         this._fuseConfigService.config
@@ -149,6 +151,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
         };
 
         this._fuseNavigationService.addNavigationItem(customFunctionNavItem, 'end');
+        console.log(this.form);
+        
     }
 
     /**
@@ -176,7 +180,10 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
      * @private
      */
     private _resetFormValues(value): void
+   
+    
     {
+    
         switch ( value )
         {
             // Vertical Layout #1
@@ -202,8 +209,8 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         footer   : {
                             background           : 'fuse-navy-900',
                             customBackgroundColor: true,
-                            hidden               : false,
-                            position             : 'below-static'
+                            hidden               : true,
+                            position             : 'above'
                         },
                         sidepanel: {
                             hidden  : false,
@@ -211,6 +218,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         }
                     }
                 });
+
 
                 break;
             }
@@ -319,9 +327,10 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
                         }
                     }
                 });
-
                 break;
             }
+       
+            
         }
     }
 

@@ -20,11 +20,19 @@ import { SampleModule } from 'app/main/sample/sample.module';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
+
+
 const appRoutes: Routes = [
+    { path: "", pathMatch: "full", redirectTo: "sample" },
     // {
     //     path: '**',
     //     redirectTo: 'sample'
     // },
+    {
+        path: "sample",
+        loadChildren: () => import('./main/sample/sample.module').then(m => m.SampleModule),
+    },
+    
 
     {
         path: "product",

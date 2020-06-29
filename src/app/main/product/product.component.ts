@@ -13,7 +13,7 @@ import { ECommerceFakeDb } from 'app/fake-db/fake-db';
 })
 
 export class ProductComponent implements OnInit, OnDestroy {
-  public  dataSource = [];
+  public  dataSource;
     displayedColumns = ['id', 'image', 'name', 'category', 'price', 'quantity', 'active'];
     hasSelectedContacts: boolean;
     private _unsubscribeAll: Subject<any>;

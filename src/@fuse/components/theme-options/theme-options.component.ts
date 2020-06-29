@@ -69,7 +69,7 @@ export class FuseThemeOptionsComponent implements OnInit, OnDestroy
             colorTheme      : new FormControl(),
             customScrollbars: new FormControl(),
             layout          : this._formBuilder.group({
-                style    : new FormControl(),
+                style    : new FormControl(''),
                 width    : new FormControl(),
                 navbar   : this._formBuilder.group({
                     primaryBackground  : new FormControl(),

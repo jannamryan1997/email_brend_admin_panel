@@ -10,6 +10,7 @@ import { ECommerceFakeDb } from 'app/fake-db/fake-db';
 
 export class MainSidebarComponent implements OnInit, OnDestroy {
 
+    
     public category = [
         {
             name: 'All Contacts',

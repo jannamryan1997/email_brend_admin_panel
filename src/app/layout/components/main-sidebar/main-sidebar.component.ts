@@ -10,8 +10,33 @@ import { ECommerceFakeDb } from 'app/fake-db/fake-db';
 
 export class MainSidebarComponent implements OnInit, OnDestroy {
 
+    public category = [
+        {
+            name: 'All Contacts',
+            filterBy:'all',
+            children: [
+                { name: 'All Contacts Chiled' },
+            ]
+        }, 
+        {
+            name: 'Freequently Cntacted',
+            filterBy:'frequent',
+            children: [
+                {name: 'Freequently Cntacted Chiled'}, 
+            ]
+        },
+        {
+            name: 'Starred Contacts',
+            filterBy:'starred',
+            children: []
+        },
+
+    ];
+
+
+ 
     user: any;
-    filterBy: string='all';
+    filterBy: string = 'all';
     @Input() productsSidebarContent: boolean;
     @Input() product;
     @Output() onchange = new EventEmitter<any>();
@@ -31,13 +56,13 @@ export class MainSidebarComponent implements OnInit, OnDestroy {
         this._unsubscribeAll = new Subject();
     }
 
-   
+
     /**
      * On init
      */
     ngOnInit(): void {
-        console.log(this.product,"prodcut");
-  
+        console.log(this.product, "prodcut");
+
 
     }
 
@@ -47,25 +72,27 @@ export class MainSidebarComponent implements OnInit, OnDestroy {
      *
      * @param filter
      */
-   public changeFilter(filter): void {
-    this.filterBy = filter;
-       let prductItem;
-  
-       if(filter==='all'){
-        prductItem= ECommerceFakeDb.products;
-        this.product=prductItem;
+    public changeFilter(filter): void {
+        console.log(filter);
         
-       }
-       else if(filter==='frequent'){
-        prductItem= ECommerceFakeDb.productsFiltre;
-        this.product=prductItem;
-       }
-       else if(filter==='starred'){
-        prductItem= ECommerceFakeDb.productsStarred;
-        this.product=prductItem;
-       }
-       this.onchange.emit(prductItem);
-      
+        this.filterBy = filter;
+        let prductItem;
+
+        if (filter === 'all') {
+            prductItem = ECommerceFakeDb.products;
+            this.product = prductItem;
+
+        }
+        else if (filter === 'frequent') {
+            prductItem = ECommerceFakeDb.productsFiltre;
+            this.product = prductItem;
+        }
+        else if (filter === 'starred') {
+            prductItem = ECommerceFakeDb.productsStarred;
+            this.product = prductItem;
+        }
+        this.onchange.emit(prductItem);
+
     }
 
 

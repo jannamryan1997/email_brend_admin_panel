@@ -17,24 +17,27 @@
 
             <div class="nav material2">
 
-                <div class="nav-item" aria-label="inbox">
-                    <a class="nav-link" matRipple (click)="changeFilter('all')"
-                       [ngClass]="{'active accent':filterBy ==='all'}">
-                        <span class="title">All Contacts</span>
+                <div class="nav-item" aria-label="inbox"  *ngFor="let item of category" (click)="changeFilter(item.filterBy)">
+                    <a class="nav-link" matRipple 
+                       [ngClass]="{'active accent':filterBy ===item.filterBy}">
+                        <span class="title">{{item.name}}</span>
+                    </a>
+                    <a class="nav-link nav-link-children"  matRipple  *ngFor="let children of item.children">
+                        <span class="title">{{children.name}}</span>
                     </a>
                 </div>
 
-                <div class="nav-item" aria-label="frequently contacted" (click)="changeFilter('frequent')">
+                <!-- <div class="nav-item" aria-label="frequently contacted" (click)="changeFilter('frequent')">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='frequent'}">
-                        <div class="title">Freequently contacted</div>
+                        <div class="title">Freequently Cntacted</div>
                     </a>
-                </div>
+                </div> -->
 
-                <div class="nav-item" aria-label="starred" (click)="changeFilter('starred')">
+                <!-- <div class="nav-item" aria-label="starred" (click)="changeFilter('starred')">
                     <a class="nav-link" matRipple [ngClass]="{'active accent':filterBy ==='starred'}">
                         <div class="title">Starred Contacts</div>
                     </a>
-                </div>
+                </div> -->
             </div>
 
         </div>

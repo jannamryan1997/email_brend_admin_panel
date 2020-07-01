@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { FuseSidebarModule, FuseThemeOptionsModule } from '@fuse/components';
@@ -12,9 +12,15 @@ import { ToolbarModule } from 'app/layout/components/toolbar/toolbar.module';
 
 import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layout-1.component';
 
+
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
 @NgModule({
     declarations: [
-        HorizontalLayout1Component
+        HorizontalLayout1Component,
     ],
     imports     : [
         MatSidenavModule,
@@ -27,11 +33,18 @@ import { HorizontalLayout1Component } from 'app/layout/horizontal/layout-1/layou
         FooterModule,
         NavbarModule,
         QuickPanelModule,
-        ToolbarModule
+        ToolbarModule,
+        MatTooltipModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        
     ],
     exports     : [
         HorizontalLayout1Component
-    ]
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+
 })
 export class HorizontalLayout1Module
 {

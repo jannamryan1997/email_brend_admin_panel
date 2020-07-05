@@ -33,7 +33,7 @@ export class MainSidebarComponent implements OnInit, OnDestroy {
         },
 
     ];
-    
+
 
 
  
@@ -96,11 +96,7 @@ export class MainSidebarComponent implements OnInit, OnDestroy {
         this.onchange.emit(prductItem);
 
     }
-
-
-
-
-
+    
     ngOnDestroy() {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next();
